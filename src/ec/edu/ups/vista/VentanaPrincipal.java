@@ -176,7 +176,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemActualizarActionPerformed
 
     private void itemListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListarActionPerformed
-        VentanaListarCliente listar=new VentanaListarCliente();
+        VentanaListarCliente listar=new VentanaListarCliente(controladorcliente);
         listar.setVisible(true);
         desktopPane.add(listar);
         setSize(listar.getWidth()+20,listar.getHeight()+70);
