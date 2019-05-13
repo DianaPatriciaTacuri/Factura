@@ -18,6 +18,11 @@ public class ControladorCliente {
     private Set<Cliente> lista;
     private int codigo;
 
+    public Set<Cliente> getLista() {
+        return lista;
+    }
+
+    
     public ControladorCliente() {
     
         lista=new HashSet<>();
@@ -78,4 +83,6 @@ public class ControladorCliente {
             System.out.println(cliente);
         }
     }
+
+   
 }
