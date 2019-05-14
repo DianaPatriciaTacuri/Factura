@@ -3,16 +3,41 @@ package ec.edu.ups.vista;
 
 import ec.edu.ups.controlador.ControladorCliente;
 import ec.edu.ups.controlador.ControladorProducto;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     ControladorCliente controladorcliente;
     ControladorProducto controladorProducto;
     
+    private Locale localizacion;
+    private ResourceBundle mensajes;
+    
     public VentanaPrincipal() {
         initComponents();
         controladorcliente=new ControladorCliente();
         controladorProducto=new ControladorProducto();
+        
+        //System.out.println("localizacion por defecto: "+ Locale.getDefault().getLanguage());
+        localizacion =new Locale("en", "US");
+        Locale.setDefault(localizacion);
+        //System.out.println("localizacion forzada: "+ Locale.getDefault().getLanguage());
+        
+        /*mensajes=ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes",Locale.getDefault());
+        System.out.println("Mensaje");
+        System.out.println(mensajes.getString("menu.item.crear"));*/
+        cambiarIdioma();
+        
+    }
+    
+    public void cambiarIdioma(){
+    
+        mensajes=ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes",Locale.getDefault());
+        fileMenu.setText(mensajes.getString("menu.cliente"));
+        productoMenu.setText(mensajes.getString("menu.producto"));
+        facturaMenu.setText(mensajes.getString("menu.factura"));
+        idiomaMenu.setText(mensajes.getString("menu.idioma"));
     }
 
     
@@ -20,20 +45,47 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         itemCrear = new javax.swing.JMenuItem();
-        itemLeer = new javax.swing.JMenuItem();
+        itemBuscarC = new javax.swing.JMenuItem();
         itemActualizar = new javax.swing.JMenuItem();
         itemEliminar = new javax.swing.JMenuItem();
         itemListar = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
-        deleteMenuItem = new javax.swing.JMenuItem();
-        pasteMenuItem = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        productoMenu = new javax.swing.JMenu();
+        itemCrearP = new javax.swing.JMenuItem();
+        itemBuscar = new javax.swing.JMenuItem();
+        itemActualizarP = new javax.swing.JMenuItem();
+        ItemEliminarP = new javax.swing.JMenuItem();
+        itemListarP = new javax.swing.JMenuItem();
+        facturaMenu = new javax.swing.JMenu();
+        itemCrearF = new javax.swing.JMenuItem();
+        itemBuscarF = new javax.swing.JMenuItem();
+        itemActualizarF = new javax.swing.JMenuItem();
+        itemEliminarF = new javax.swing.JMenuItem();
+        itemListarF = new javax.swing.JMenuItem();
+        idiomaMenu = new javax.swing.JMenu();
+        itemIngles = new javax.swing.JMenuItem();
+        itemEspañol = new javax.swing.JMenuItem();
+
+        jMenuItem2.setText("jMenuItem2");
+
+        jMenuItem3.setText("jMenuItem3");
+
+        jMenuItem4.setText("jMenuItem4");
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,14 +101,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
         fileMenu.add(itemCrear);
 
-        itemLeer.setMnemonic('s');
-        itemLeer.setText("Leer");
-        itemLeer.addActionListener(new java.awt.event.ActionListener() {
+        itemBuscarC.setMnemonic('s');
+        itemBuscarC.setText("buscar");
+        itemBuscarC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemLeerActionPerformed(evt);
+                itemBuscarCActionPerformed(evt);
             }
         });
-        fileMenu.add(itemLeer);
+        fileMenu.add(itemBuscarC);
 
         itemActualizar.setMnemonic('a');
         itemActualizar.setText("Actualizar");
@@ -86,49 +138,88 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
-        editMenu.setMnemonic('e');
-        editMenu.setText("Producto");
+        productoMenu.setMnemonic('e');
+        productoMenu.setText("Producto");
 
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Crear");
-        cutMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        itemCrearP.setMnemonic('t');
+        itemCrearP.setText("Crear");
+        itemCrearP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cutMenuItemActionPerformed(evt);
+                itemCrearPActionPerformed(evt);
             }
         });
-        editMenu.add(cutMenuItem);
+        productoMenu.add(itemCrearP);
 
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Buscar");
-        copyMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        itemBuscar.setMnemonic('y');
+        itemBuscar.setText("buscar");
+        itemBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                copyMenuItemActionPerformed(evt);
+                itemBuscarActionPerformed(evt);
             }
         });
-        editMenu.add(copyMenuItem);
+        productoMenu.add(itemBuscar);
 
-        deleteMenuItem.setMnemonic('d');
-        deleteMenuItem.setText("Actualizar");
-        deleteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        itemActualizarP.setMnemonic('d');
+        itemActualizarP.setText("Actualizar");
+        itemActualizarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteMenuItemActionPerformed(evt);
+                itemActualizarPActionPerformed(evt);
             }
         });
-        editMenu.add(deleteMenuItem);
+        productoMenu.add(itemActualizarP);
 
-        pasteMenuItem.setMnemonic('p');
-        pasteMenuItem.setText("Eliminar");
-        pasteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        ItemEliminarP.setMnemonic('p');
+        ItemEliminarP.setText("Eliminar");
+        ItemEliminarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pasteMenuItemActionPerformed(evt);
+                ItemEliminarPActionPerformed(evt);
             }
         });
-        editMenu.add(pasteMenuItem);
+        productoMenu.add(ItemEliminarP);
 
-        jMenuItem1.setText("Listar");
-        editMenu.add(jMenuItem1);
+        itemListarP.setText("Listar");
+        productoMenu.add(itemListarP);
 
-        menuBar.add(editMenu);
+        menuBar.add(productoMenu);
+
+        facturaMenu.setText("Factura");
+
+        itemCrearF.setText("crear");
+        facturaMenu.add(itemCrearF);
+
+        itemBuscarF.setText("buscar");
+        facturaMenu.add(itemBuscarF);
+
+        itemActualizarF.setText("actualizar");
+        facturaMenu.add(itemActualizarF);
+
+        itemEliminarF.setText("eliminar");
+        facturaMenu.add(itemEliminarF);
+
+        itemListarF.setText("listar");
+        facturaMenu.add(itemListarF);
+
+        menuBar.add(facturaMenu);
+
+        idiomaMenu.setText("Idioma");
+
+        itemIngles.setText("ingles");
+        itemIngles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemInglesActionPerformed(evt);
+            }
+        });
+        idiomaMenu.add(itemIngles);
+
+        itemEspañol.setText("español");
+        itemEspañol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemEspañolActionPerformed(evt);
+            }
+        });
+        idiomaMenu.add(itemEspañol);
+
+        menuBar.add(idiomaMenu);
 
         setJMenuBar(menuBar);
 
@@ -161,12 +252,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
        setSize(crear.getWidth()+20,crear.getHeight()+70);
     }//GEN-LAST:event_itemCrearActionPerformed
 
-    private void itemLeerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemLeerActionPerformed
+    private void itemBuscarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBuscarCActionPerformed
         VentanaLeerCliente leer=new VentanaLeerCliente(controladorcliente);
         leer.setVisible(true);
         desktopPane.add(leer);
         setSize(leer.getWidth()+20,leer.getHeight()+70);
-    }//GEN-LAST:event_itemLeerActionPerformed
+    }//GEN-LAST:event_itemBuscarCActionPerformed
 
     private void itemActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemActualizarActionPerformed
        VentanaActualizarCliente actualizar=new VentanaActualizarCliente(controladorcliente);
@@ -182,33 +273,45 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         setSize(listar.getWidth()+20,listar.getHeight()+70);
     }//GEN-LAST:event_itemListarActionPerformed
 
-    private void cutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cutMenuItemActionPerformed
+    private void itemCrearPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCrearPActionPerformed
         VentanaCrearProducto crear=new VentanaCrearProducto(controladorProducto);
         crear.setVisible(true);
         desktopPane.add(crear);
         setSize(crear.getWidth()+20,crear.getHeight()+70);
-    }//GEN-LAST:event_cutMenuItemActionPerformed
+    }//GEN-LAST:event_itemCrearPActionPerformed
 
-    private void copyMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_copyMenuItemActionPerformed
+    private void itemBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemBuscarActionPerformed
         VentanaLeerProducto leer=new VentanaLeerProducto(controladorProducto);
         leer.setVisible(true);
         desktopPane.add(leer);
         setSize(leer.getWidth()+20,leer.getHeight()+70);
-    }//GEN-LAST:event_copyMenuItemActionPerformed
+    }//GEN-LAST:event_itemBuscarActionPerformed
 
-    private void deleteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuItemActionPerformed
+    private void itemActualizarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemActualizarPActionPerformed
         VentanaActualizarProducto actualizar=new VentanaActualizarProducto(controladorProducto);
         actualizar.setVisible(true);
         desktopPane.add(actualizar);
         setSize(actualizar.getWidth()+20,actualizar.getHeight()+70);
-    }//GEN-LAST:event_deleteMenuItemActionPerformed
+    }//GEN-LAST:event_itemActualizarPActionPerformed
 
-    private void pasteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pasteMenuItemActionPerformed
+    private void ItemEliminarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ItemEliminarPActionPerformed
         VentanaEliminarProducto eliminar=new VentanaEliminarProducto(controladorProducto);
         eliminar.setVisible(true);
         desktopPane.add(eliminar);
         setSize(eliminar.getWidth()+20,eliminar.getHeight()+70);
-    }//GEN-LAST:event_pasteMenuItemActionPerformed
+    }//GEN-LAST:event_ItemEliminarPActionPerformed
+
+    private void itemEspañolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemEspañolActionPerformed
+        localizacion=new Locale("es", "EC");
+        Locale.setDefault(localizacion);
+        cambiarIdioma();
+    }//GEN-LAST:event_itemEspañolActionPerformed
+
+    private void itemInglesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemInglesActionPerformed
+       localizacion=new Locale("en", "US");
+        Locale.setDefault(localizacion);
+        cambiarIdioma();
+    }//GEN-LAST:event_itemInglesActionPerformed
 
     public static void main(String args[]) {
        
@@ -220,20 +323,35 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem copyMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
-    private javax.swing.JMenuItem deleteMenuItem;
+    private javax.swing.JMenuItem ItemEliminarP;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
+    private javax.swing.JMenu facturaMenu;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenu idiomaMenu;
     private javax.swing.JMenuItem itemActualizar;
+    private javax.swing.JMenuItem itemActualizarF;
+    private javax.swing.JMenuItem itemActualizarP;
+    private javax.swing.JMenuItem itemBuscar;
+    private javax.swing.JMenuItem itemBuscarC;
+    private javax.swing.JMenuItem itemBuscarF;
     private javax.swing.JMenuItem itemCrear;
+    private javax.swing.JMenuItem itemCrearF;
+    private javax.swing.JMenuItem itemCrearP;
     private javax.swing.JMenuItem itemEliminar;
-    private javax.swing.JMenuItem itemLeer;
+    private javax.swing.JMenuItem itemEliminarF;
+    private javax.swing.JMenuItem itemEspañol;
+    private javax.swing.JMenuItem itemIngles;
     private javax.swing.JMenuItem itemListar;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem itemListarF;
+    private javax.swing.JMenuItem itemListarP;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem pasteMenuItem;
+    private javax.swing.JMenu productoMenu;
     // End of variables declaration//GEN-END:variables
 
 }
