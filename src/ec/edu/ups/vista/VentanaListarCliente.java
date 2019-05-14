@@ -24,6 +24,7 @@ public class VentanaListarCliente extends javax.swing.JInternalFrame {
     public VentanaListarCliente(ControladorCliente controladorCliente) {
         initComponents();
         this.controladorCliente=controladorCliente;
+        llenarDatos();
     }
     
     public void llenarDatos(){
@@ -38,6 +39,7 @@ public class VentanaListarCliente extends javax.swing.JInternalFrame {
                 cliente.getNombre(),
                 cliente.getDireccion(),
                 cliente.getTelefono() };
+            modelo.addRow(dato);
         }
     }
     
