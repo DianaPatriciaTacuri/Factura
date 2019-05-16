@@ -15,9 +15,28 @@ public class ControladorProducto {
         codigo=1;
     }
 
+    public Set<Producto> getLista() {
+        return lista;
+    }
+
+    public void setLista(Set<Producto> lista) {
+        this.lista = lista;
+    }
+
     public int getCodigo() {
         return codigo;
     }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    @Override
+    public String toString() {
+        return "ControladorProducto{" + "lista=" + lista + ", codigo=" + codigo + '}';
+    }
+
+    
     
     public void cread(Producto producto){
     

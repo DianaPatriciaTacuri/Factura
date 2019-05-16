@@ -84,5 +84,9 @@ public class ControladorCliente {
         }
     }
 
+    public Cliente readCI(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
    
 }

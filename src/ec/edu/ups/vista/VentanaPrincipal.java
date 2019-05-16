@@ -11,17 +11,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     ControladorCliente controladorcliente;
     ControladorProducto controladorProducto;
     
-    private Locale localizacion;
-    private ResourceBundle mensajes;
+    public static Locale localizacion;
+    public static ResourceBundle mensajes; 
     
     public VentanaPrincipal() {
+        localizacion = new Locale("es", "EC");
+		mensajes=ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes",localizacion);
         initComponents();
         controladorcliente=new ControladorCliente();
         controladorProducto=new ControladorProducto();
         
+        
         //System.out.println("localizacion por defecto: "+ Locale.getDefault().getLanguage());
-        localizacion =new Locale("en", "US");
-        Locale.setDefault(localizacion);
+        //localizacion =new Locale("en", "US");
+        //Locale.setDefault(localizacion);
         //System.out.println("localizacion forzada: "+ Locale.getDefault().getLanguage());
         
         /*mensajes=ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes",Locale.getDefault());
@@ -33,11 +36,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public void cambiarIdioma(){
     
-        mensajes=ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes",Locale.getDefault());
+        mensajes=ResourceBundle.getBundle("ec.edu.ups.idiomas.mensajes",localizacion);
         fileMenu.setText(mensajes.getString("menu.cliente"));
         productoMenu.setText(mensajes.getString("menu.producto"));
         facturaMenu.setText(mensajes.getString("menu.factura"));
         idiomaMenu.setText(mensajes.getString("menu.idioma"));
+        itemActualizar.setText(mensajes.getString("menu.item.actualizar"));
+        itemActualizarF.setText(mensajes.getString("menu.item.actualizar"));
+        itemActualizarP.setText(mensajes.getString("menu.item.actualizar"));
+        itemBuscar.setText(mensajes.getString("menu.item.buscar"));
+        itemBuscarC.setText(mensajes.getString("menu.item.buscar"));
+        itemBuscarF.setText(mensajes.getString("menu.item.buscar"));
+        itemCrear.setText(mensajes.getString("menu.item.crear"));
+        itemCrearP.setText(mensajes.getString("menu.item.crear"));
+        itemCrearF.setText(mensajes.getString("menu.item.crear"));
+        itemEliminar.setText(mensajes.getString("menu.item.eliminar"));
+        ItemEliminarP.setText(mensajes.getString("menu.item.eliminar"));
+        itemEliminarF.setText(mensajes.getString("menu.item.eliminar"));
+        itemListar.setText(mensajes.getString("menu.item.listar"));
+        
     }
 
     
